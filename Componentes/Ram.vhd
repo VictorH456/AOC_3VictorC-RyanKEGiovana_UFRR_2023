@@ -1,14 +1,47 @@
---Ram
---Bibliotecas e pacotes
-LIBRARY IEEE;
-USE IEEE.std_logic_1164.all;
---Entidade
-entity Ram is
-	port(
-	
-	);
-end entity;	
-architecture Behavior of Ram is
-begin
-	
-end architecture;
+library IEEE;
+use IEEE.STD_logic_1164.ALL;
+USE IEEE.numeric_std.ALL;
+
+entity RAM is 
+port ( 
+	CLOCK, WRITE_MEMORY, READ_MEMORY: IN STD_LOGIC_VECTOR (15 DOWNTO 0);
+	ENDERECO: IN STD_LOGIC_VECTOR (15 DOWNTO 0); 
+	DATA_IN: IN STD_LOGIC_VECTOR (15 DOWNTO 0);
+	DATA_OUT: IN STD_LOGIC_VECTOR (15 DOWNTO 0); 
+); 
+END RAM;
+
+architecture BEHAVIORAL of RAM is 
+signal RAM_addr: STD_LOGIC_VECTOR (15 DOWNTO 0);
+type RAMlist is array (0 to 15) of STD_LOGIC_VECTOR (15 DOWNTO 0);
+constant RAM_data: RAM_type: =(
+   "0000000000000000",
+   "0000000000000000",
+   "0000000000000000",
+   "0000000000000000",
+   "0000000000000000",
+   "0000000000000000",
+   "0000000000000000",
+   "0000000000000000",
+   "0000000000000000",
+   "0000000000000000",
+   "0000000000000000",
+   "0000000000000000",
+   "0000000000000000",
+   "0000000000000000",
+   "0000000000000000",
+   "0000000000000000"
+);	
+BEGIN 
+	PROCESS(CLOCK)
+	BEGIN
+		IF(rising_edge(CLOCK)) THEN
+			IF (MEM_WRITE = "1") THEN
+					memoria(to_integer(unsigned(address))) <= DATA_IN;
+			END IF;
+			IF (MEN_READ = "1") THEN
+				DATA_OUT <= MEN(to_interger(unsigned(ADDRESS)));
+			END IF;
+		END IF;
+	END PROCESS;
+END;
