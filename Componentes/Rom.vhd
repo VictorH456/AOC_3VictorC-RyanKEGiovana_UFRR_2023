@@ -13,7 +13,7 @@ entity Rom is
 end entity;	
 architecture Behavior of Rom is
 	type memoria_array is array(natural range <>) of std_logic_vecto(15 downto 0);
-	constant operacoes: memoria_array(0 to 16) :=
+	constant operacoes: memoria_array(0 to 17) :=
 	
 	--Valores
 	--(0 => "1100000011000000", -- Coloca 0
