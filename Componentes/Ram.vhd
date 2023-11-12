@@ -2,19 +2,18 @@ library IEEE;
 use IEEE.STD_logic_1164.ALL;
 USE IEEE.numeric_std.ALL;
 
-entity RAM is 
-port ( 
-	CLOCK, WRITE_MEMORY, READ_MEMORY: IN STD_LOGIC_VECTOR (15 DOWNTO 0);
+entity Ram is 
+port (
+	clock,WRITE_MEMORY, READ_MEMORY: in std_logic;
 	ENDERECO: IN STD_LOGIC_VECTOR (15 DOWNTO 0); 
 	DATA_IN: IN STD_LOGIC_VECTOR (15 DOWNTO 0);
-	DATA_OUT: IN STD_LOGIC_VECTOR (15 DOWNTO 0); 
-); 
-END RAM;
+	DATA_OUT: out STD_LOGIC_VECTOR (15 DOWNTO 0)
+	); 
+end entity;
 
-architecture BEHAVIORAL of RAM is 
-signal RAM_addr: STD_LOGIC_VECTOR (15 DOWNTO 0);
-type RAMlist is array (0 to 15) of STD_LOGIC_VECTOR (15 DOWNTO 0);
-constant RAM_data: RAM_type: =(
+architecture Behavior of ram is
+TYPE MemList IS ARRAY (0 TO 15) OF STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal RAM_data: MemList := (
    "0000000000000000",
    "0000000000000000",
    "0000000000000000",
@@ -33,14 +32,14 @@ constant RAM_data: RAM_type: =(
    "0000000000000000"
 );	
 BEGIN 
-	PROCESS(CLOCK)
+	PROCESS(clock)
 	BEGIN
-		IF(rising_edge(CLOCK)) THEN
+		IF(rising_edge(clock)) THEN
 			IF (MEM_WRITE = "1") THEN
-					memoria(to_integer(unsigned(address))) <= DATA_IN;
+					RAM_data(to_integer(unsigned(ENDERECO))) <= DATA_IN;
 			END IF;
 			IF (MEN_READ = "1") THEN
-				DATA_OUT <= MEN(to_interger(unsigned(ADDRESS)));
+				DATA_OUT <= RAM_data(to_interger(unsigned(ENDERECO)));
 			END IF;
 		END IF;
 	END PROCESS;
