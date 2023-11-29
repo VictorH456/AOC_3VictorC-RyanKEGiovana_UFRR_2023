@@ -8,7 +8,6 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 --Entidade
 entity somador is
 	port(
-	
 	Clock:		in std_logic;
 	entrada:		in std_logic_vector(15 downto 0);
 	saida:		out std_logic_vector(15 downto 0)

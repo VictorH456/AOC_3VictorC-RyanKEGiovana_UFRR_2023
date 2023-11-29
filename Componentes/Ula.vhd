@@ -11,14 +11,14 @@ entity Ula is
 PORT(
 			Clock: 			in std_logic;
 			AluOp:			in std_logic_vector(3 downto 0);
-			rs,rd,rt:		in std_logic_vector(15 downto 0);
+			rs,rd:		in std_logic_vector(15 downto 0);
 			resultado:		out std_logic_vector(15 downto 0);
-			z, overflow:	out std_logic
+			z:					out std_logic
 	);
 end entity;
 architecture Behavior of Ula is
 begin
-	process (AluOp, rs,rd,rt)
+	process (AluOp, rs, rd)
 	begin
 		case AluOp is
 			when "0000" =>--add
@@ -31,7 +31,7 @@ begin
 				resultado <= rs;
 			when "0100" =>--lw
 				resultado <= rs;
-			WHEN "101" => 
+			WHEN "0101" => 
 					if(rs <= rd) then
 						resultado <= "1111111111111111";
 					else 

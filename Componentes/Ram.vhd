@@ -1,5 +1,5 @@
 library IEEE;
-use IEEE.STD_logic_1164.ALL;
+USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.numeric_std.ALL;
 
 entity Ram is 
@@ -13,33 +13,16 @@ end entity;
 
 architecture Behavior of ram is
 TYPE MemList IS ARRAY (0 TO 15) OF STD_LOGIC_VECTOR(15 DOWNTO 0);
-signal RAM_data: MemList := (
-   "0000000000000000",
-   "0000000000000000",
-   "0000000000000000",
-   "0000000000000000",
-   "0000000000000000",
-   "0000000000000000",
-   "0000000000000000",
-   "0000000000000000",
-   "0000000000000000",
-   "0000000000000000",
-   "0000000000000000",
-   "0000000000000000",
-   "0000000000000000",
-   "0000000000000000",
-   "0000000000000000",
-   "0000000000000000"
-);	
+signal RAM_data: MemList := (others => "0000000000000000");	
 BEGIN 
 	PROCESS(clock)
 	BEGIN
 		IF(rising_edge(clock)) THEN
-			IF (MEM_WRITE = "1") THEN
+			IF (WRITE_MEMORY = '1') THEN
 					RAM_data(to_integer(unsigned(ENDERECO))) <= DATA_IN;
 			END IF;
-			IF (MEN_READ = "1") THEN
-				DATA_OUT <= RAM_data(to_interger(unsigned(ENDERECO)));
+			IF (READ_MEMORY = '1') THEN
+				DATA_OUT <= RAM_data(to_integer(unsigned(ENDERECO)));
 			END IF;
 		END IF;
 	END PROCESS;

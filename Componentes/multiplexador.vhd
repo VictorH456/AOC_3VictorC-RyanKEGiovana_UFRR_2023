@@ -1,4 +1,4 @@
---Porta multiplexador
+ --Porta multiplexador
 --Bibliotecas e pacotes
 LIBRARY IEEE;
 USE IEEE.std_logic_1164.all;
@@ -7,7 +7,7 @@ entity multiplexador is
 	port(
 		a, b:		in std_logic_vector(15 downto 0);
 		s:			in std_logic;
-		z			: out std_logic_vector(15 downto 0)
+		z:			out std_logic_vector(15 downto 0)
 	);
 end entity;	
 
