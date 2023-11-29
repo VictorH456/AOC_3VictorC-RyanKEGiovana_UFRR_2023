@@ -15,46 +15,55 @@ end entity;
 architecture Behavior of Uc is
 begin
 	process(Clock,OpCode)
-	Constant Add	: Std_logic_vector(3 DOWNTO 0) := "0000";
-	Constant Sub	: Std_logic_vector(3 DOWNTO 0) := "0001";
-	Constant Lw		: Std_logic_vector(3 DOWNTO 0) := "0010";
-	Constant Sw		: Std_logic_vector(3 DOWNTO 0) := "0011";
-	Constant Beq	: Std_logic_vector(3 DOWNTO 0) := "0100";
-	Constant J		: Std_logic_vector(3 DOWNTO 0) := "0101";
+	Constant Add	: Std_logic_vector(3 downto 0) := "0000";
+	Constant Addi  : Std_logic_vector(3 downto 0) := "0001";
+	Constant Sub	: Std_logic_vector(3 downto 0) := "0010";
+	Constant Subi  : Std_logic_vector(3 downto 0) := "0011";
+	Constant Lw		: Std_logic_vector(3 downto 0) := "0100";
+	Constant Sw		: Std_logic_vector(3 downto 0) := "0101";
+	Constant Li    : STD_LOGIC_VECTOR(3 downto 0) := "0110";
+	Constant Beq	: Std_logic_vector(3 downto 0) := "0111";
+	Constant J		: Std_logic_vector(3 downto 0) := "1000";
 	begin
 		case OpCode is
 			when Add =>
 				AluOp 	<= "0000";
-				Regwrite <= '0';
+				Regwrite <= '1';
 				Jump 		<= '0';
 				Branch 	<= '0';
 				MemRead 	<= '0';
 				MemToReg <= '0';
 				MemWrite <= '0';
 				Alusrc 	<= '0';
-				
+			when Addi =>
+            AluOp 	<= "0001";
+				Regwrite <= '1';
+				Jump 		<= '0';
+				Branch 	<= '0';
+				MemRead 	<= '0';
+				MemToReg <= '0';
+				MemWrite <= '0';
+				Alusrc 	<= '1';
 			when Sub =>
-				AluOp 	<= "0001";
-				Regwrite <= '0';
-				Jump 		<= '0';
-				Branch 	<= '0';
-				MemRead 	<= '0';
-				MemToReg <= '0';
-				MemWrite <= '0';
-				Alusrc 	<= '0';
-				
-			when Lw =>
 				AluOp 	<= "0010";
 				Regwrite <= '1';
 				Jump 		<= '0';
 				Branch 	<= '0';
-				MemRead 	<= '1';
-				MemToReg <= '1';
+				MemRead 	<= '0';
+				MemToReg <= '0';
 				MemWrite <= '0';
 				Alusrc 	<= '0';
-				
-			when Sw =>
+			when subi =>
 				AluOp 	<= "0011";
+				Regwrite <= '1';
+				Jump 		<= '0';
+				Branch 	<= '0';
+				MemRead 	<= '0';
+				MemToReg <= '0';
+				MemWrite <= '0';
+				Alusrc 	<= '1';
+			when Lw =>
+				AluOp 	<= "0100";
 				Regwrite <= '1';
 				Jump 		<= '0';
 				Branch 	<= '0';
@@ -62,9 +71,26 @@ begin
 				MemToReg <= '1';
 				MemWrite <= '0';
 				Alusrc 	<= '0';
-				
+			when Sw =>
+				AluOp 	<= "0101";
+				Regwrite <= '0';
+				Jump 		<= '0';
+				Branch 	<= '0';
+				MemRead 	<= '0';
+				MemToReg <= '0';
+				MemWrite <= '1';
+				Alusrc 	<= '0';
+			when Li =>
+				AluOp 	<= "0110";
+				Regwrite <= '1';
+				Jump 		<= '0';
+				Branch 	<= '0';
+				MemRead 	<= '0';
+				MemToReg <= '0';
+				MemWrite <= '0';
+				Alusrc 	<= '1';
 			when Beq =>
-				AluOp 	<= "0100";
+				AluOp 	<= "0111";
 				Regwrite <= '0';
 				Jump 		<= '0';
 				Branch 	<= '1';
@@ -74,7 +100,7 @@ begin
 				Alusrc 	<= '0';
 				
 			when others => --J
-				AluOp 	<= "0101";
+				AluOp 	<= "1000";
 				Regwrite <= '0';
 				Jump 		<= '1';
 				Branch 	<= '0';

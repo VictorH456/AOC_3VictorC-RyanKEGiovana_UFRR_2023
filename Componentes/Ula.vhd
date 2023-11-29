@@ -11,7 +11,7 @@ entity Ula is
 PORT(
 			Clock: 			in std_logic;
 			AluOp:			in std_logic_vector(3 downto 0);
-			rs,rd:		in std_logic_vector(15 downto 0);
+			rs,rd:			in std_logic_vector(15 downto 0);
 			resultado:		out std_logic_vector(15 downto 0);
 			z:					out std_logic
 	);
@@ -21,23 +21,27 @@ begin
 	process (AluOp, rs, rd)
 	begin
 		case AluOp is
-			when "0000" =>--add
+			when "0000" => --add
 				resultado <= rs + rd;
-			when "0001" =>--sub
+			WHEN "0001" => --addi
+				resultado <= rs + rd;
+			when "0010" =>	--sub
 				resultado <= rs - rd;
-			when "0010" =>--lw
+			WHEN "0011" => --subi
+				resultado <= rs - rd;
+			when "0100" => --lw
 				resultado <= rs;
-			when "0011" =>--sw
+			when "0101" => --sw
 				resultado <= rs;
-			when "0100" =>--lw
-				resultado <= rs;
-			WHEN "0101" => 
+			when "0110" => --li
+				resultado <= rd;
+			WHEN "0111" => --bne
 					if(rs <= rd) then
 						resultado <= "1111111111111111";
 					else 
 						resultado <= "0000000000000000";
 					end if;	
-			when others =>
+			when others => --J
 				resultado <= "0000000000000000";
 			end case;
 		end process;

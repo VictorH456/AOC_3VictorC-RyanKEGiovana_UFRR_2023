@@ -1,5 +1,17 @@
 -- Rom
 -- Bibliotecas e pacotes
+
+--Instrução|reg1|reg2|Reg3
+--Add		= "0000"|
+--Addi	= "0001"|
+--Sub		= "0010"|
+--Subi 	= "0011"|
+--Lw 		= "0100"|
+--Sw 		= "0101"|
+--Li 		= "0110"|
+--Beq		= "0111"|
+--J 		= "1000"|
+
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.STD_LOGIC_ARITH.ALL;
