@@ -16,6 +16,6 @@ begin
 	rs <= instrucao(11 downto 8);
 	rt <= instrucao(7 downto 4);
 	rd <= instrucao(3 downto 0);
-	endereco(11 downto 0) <= instrucao(11 downto 0);
-	endereco(15 downto 12) <= (others =>'0');
+	endereco(3 downto 0) <= instrucao(3 downto 0);
+	endereco(15 downto 4) <= (others =>'0');
 end architecture;
