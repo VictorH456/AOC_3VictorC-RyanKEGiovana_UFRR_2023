@@ -2,6 +2,7 @@
 <p align="center">
   <a href="">
     <img src="https://user-images.githubusercontent.com/49700354/114078715-a61b2f00-987f-11eb-8eef-6fd7cfc17d33.png" alt="" width="80" height="80">
+    <img src="https://github.com/VictorH456/AOC_3VictorC-RyanKEGiovana_UFRR_2023/blob/main/Componentes/image-removebg-preview%20(1).png" alt="Logo da Minha Empresa">
   </a>
   <h1 align="center">Projeto CPU INSALUBYTE</h1>
   <p align="center">
