@@ -29,7 +29,7 @@ begin
 	
 	Bh: Branch_helper port map(in_branch_helper, out_branch_helper);
 	
-	process (AluOp, rs, rd, in_branch_helper, out_branch_helper)
+	process (Clock, AluOp, rs, rd, in_branch_helper, out_branch_helper)
 	begin
 		case AluOp is
 			
