@@ -36,14 +36,8 @@ begin
 			when "0000" | "0001" => --add
 				resultado <= rs + rd;
 			
---			WHEN "0001" => --addi
---				resultado <= rs + rd;
-			
 			when "0010" | "0011" =>	--sub
 				resultado <= rs - rd;
-			
---			WHEN "0011" => --subi
---				resultado <= rs - rd;
 			
 			when "0100" => --lw
 				resultado <= rs;
