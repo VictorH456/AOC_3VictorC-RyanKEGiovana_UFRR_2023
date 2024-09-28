@@ -5,7 +5,7 @@
   </a>
   <h1 align="center">Projeto CPU INSALUBYTE</h1>
   <p align="center">
-    <img src="https://github.com/VictorH456/AOC_3VictorC-RyanKEGiovana_UFRR_2023/blob/main/Apresenta%C3%A7%C3%A3o/image.png">
+    <img src="https://github.com/VictorH456/AOC_3VictorC-RyanKEGiovana_UFRR_2023/blob/main/Apresenta%C3%A7%C3%A3o/AOC%20-%20Estrutura%20e%20organiza%C3%A7%C3%A3o%20de%20computadores%20%20(2).png">
     
   Este trabalho aborda o projeto de implementação de um processador 16 bits uni-ciclo baseado na arquitetura do processador MIPS, implementado através
   da linguagem VHDL e a ferramenta Intel Quartus Prime Lite.
